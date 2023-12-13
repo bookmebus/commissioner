@@ -12,6 +12,8 @@ module SpreeCmCommissioner
     validates :name, uniqueness: true
     accepts_nested_attributes_for :vehicle_seats, allow_destroy: true
 
+    self.whitelisted_ransackable_attributes = %w[id]
+
     def seat_layers
       grouped_seats = SpreeCmCommissioner::VehicleSeat.where(vehicle_type_id: id).group_by(&:layer).transform_values do |seats|
         seats.group_by(&:row).transform_values do |row_seats|
