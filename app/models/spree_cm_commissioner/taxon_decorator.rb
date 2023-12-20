@@ -9,7 +9,7 @@ module SpreeCmCommissioner
       base.validates_associated :category_icon
       base.before_save :set_kind
 
-      base.enum kind: { category: 0, cms: 1, event: 2 }
+      base.enum kind: { category: 0, cms: 1, event: 2, kyc: 3 }
     end
 
     def set_kind
